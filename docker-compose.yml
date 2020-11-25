@@ -10,7 +10,7 @@ services:
   local-server:
     image: aironou/ebanx:php7.4
     command: symfony local:server:start
-    container_name: aironou-ebanx-ipkiss-local-server
+    container_name: aironou-ebanx-local-server
     volumes:
       - .:/aironou
     env_file:
