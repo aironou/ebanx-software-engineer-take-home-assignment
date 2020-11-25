@@ -1,0 +1,19 @@
+version: '3'
+services:
+  php:
+    build:
+      dockerfile: docker/php/Dockerfile
+      context: .
+    image: aironou/ebanx:php7.4
+    volumes:
+      - .:/aironou
+  local-server:
+    image: aironou/ebanx:php7.4
+    command: symfony local:server:start
+    container_name: aironou-ebanx-ipkiss-local-server
+    volumes:
+      - .:/aironou
+    env_file:
+      - .env.local
+    ports:
+      - "${LOCAL_SERVER_HOST_PORT}:8000"
