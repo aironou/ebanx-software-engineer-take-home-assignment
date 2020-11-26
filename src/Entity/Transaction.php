@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @package App\Entity
  *
  * @ORM\Entity(repositoryClass="App\Repository\TransactionRepository")
- * @ORM\Table()
+ * @ORM\Table(name="ebanx_transaction")
  */
 class Transaction implements EntityInterface
 {
