@@ -150,10 +150,20 @@ class Transaction implements EntityInterface
 
     /**
      * @return array
+     * @throws TransactionTypeNotAllowedException
      */
     public function jsonSerialize()
     {
-        return [];
+        switch ($this->getType()) {
+            case self::DEPOSIT_TYPE:
+                return $this->jsonSerializeDeposit();
+            case self::TRANSFER_TYPE:
+                return $this->jsonSerializerTransfer();
+            case self::WITHDRAW_TYPE:
+                return $this->jsonSerializeWithdraw();
+            default:
+                throw new TransactionTypeNotAllowedException();
+        }
     }
 
     /**
@@ -181,5 +191,36 @@ class Transaction implements EntityInterface
             },
             ARRAY_FILTER_USE_KEY
         );
+    }
+
+    /**
+     * @return array
+     */
+    private function jsonSerializeDeposit(): array
+    {
+        return [
+            'destination' => $this->getDestination()->jsonSerialize()
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    private function jsonSerializerTransfer(): array
+    {
+        return [
+            'origin' => $this->getOrigin()->jsonSerialize(),
+            'destination' => $this->getDestination()->jsonSerialize()
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    private function jsonSerializeWithdraw(): array
+    {
+        return [
+            'origin' => $this->getOrigin()->jsonSerialize()
+        ];
     }
 }
