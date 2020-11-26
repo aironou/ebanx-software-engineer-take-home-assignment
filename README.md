@@ -16,8 +16,8 @@
 1. Run `cp docker/php/usr/local/etc/php/conf.d/ebanx.ini.dist docker/php/usr/local/etc/php/conf.d/ebanx.ini` to create PHP config file
 1. If you want to change any config, edit the new files
 1. Run `docker-compose build` to build container image
-1. Run `docker-compose run --rm composer install --verbose` to install project dependencies
-1. Run `docker-compose run --rm bin/console doctrine:migrations:migrate --no-interaction` to create database
+1. Run `docker-compose run --rm php composer install --verbose` to install project dependencies
+1. Run `docker-compose run --rm php bin/console doctrine:migrations:migrate --no-interaction` to create database
 
 
 ## Server (development environment)
