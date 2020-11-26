@@ -20,6 +20,10 @@ class BalanceService
         $this->transactionService = $transactionService;
     }
 
+    /**
+     * @param Account $account
+     * @return float
+     */
     public function getBalanceByAccount(Account $account): float
     {
         return array_sum(array_map(function (Transaction $transaction) use ($account) {
