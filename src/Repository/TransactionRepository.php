@@ -12,7 +12,7 @@ class TransactionRepository extends EntityRepository
      * @param Account $account
      * @return array
      */
-    public function getByAccount(Account $account): array
+    public function findByAccount(Account $account): array
     {
         $queryBuilder = $this->createQueryBuilder(self::ALIAS);
         return $queryBuilder->select()
