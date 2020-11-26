@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class Transaction
  * @package App\Entity
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="App\Repository\TransactionRepository")
  * @ORM\Table()
  */
 class Transaction implements EntityInterface
