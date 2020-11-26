@@ -14,6 +14,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Transaction implements EntityInterface
 {
+    const DEPOSIT_TYPE = 'deposit';
+    const WITHDRAW_TYPE = 'withdraw';
+    const TRANSFER_TYPE = 'transfer';
+
     /**
      * @var int
      *
