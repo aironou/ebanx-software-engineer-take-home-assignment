@@ -44,7 +44,7 @@ class Transaction implements EntityInterface
     /**
      * @var Account|null
      *
-     * @ORM\ManyToOne(targetEntity="Account")
+     * @ORM\ManyToOne(targetEntity="Account", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(nullable=true)
      */
     private ?Account $origin;
@@ -52,7 +52,7 @@ class Transaction implements EntityInterface
     /**
      * @var Account|null
      *
-     * @ORM\ManyToOne(targetEntity="Account")
+     * @ORM\ManyToOne(targetEntity="Account", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(nullable=true)
      */
     private ?Account $destination;

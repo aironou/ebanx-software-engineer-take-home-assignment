@@ -33,7 +33,7 @@ class AccountService extends AbstractEntityService
         try {
             return $this->findOne($id);
         } catch (NoResultException $exception) {
-            return $this->persist((new Account())->setId($id));
+            return (new Account())->setId($id);
         }
     }
 }
