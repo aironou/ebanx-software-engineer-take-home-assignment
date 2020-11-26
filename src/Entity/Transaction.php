@@ -117,7 +117,7 @@ class Transaction implements EntityInterface
      */
     public function getOrigin(): ?Account
     {
-        return $this->origin;
+        return $this->origin ?? null;
     }
 
     /**
@@ -135,7 +135,7 @@ class Transaction implements EntityInterface
      */
     public function getDestination(): ?Account
     {
-        return $this->destination;
+        return $this->destination ?? null;
     }
 
     /**
