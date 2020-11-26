@@ -16,3 +16,8 @@ services:
     App\Controller\:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
+
+    _instanceof:
+        App\Interfaces\EntityServiceInterface:
+            calls:
+                - [setEntityManager, ['@doctrine.orm.entity_manager']]
