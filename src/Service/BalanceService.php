@@ -22,13 +22,18 @@ class BalanceService
 
     /**
      * @param Account $account
+     * @param Transaction|null $currentTransaction
      * @return float
      */
-    public function getBalanceByAccount(Account $account): float
+    public function getBalanceByAccount(Account $account, ?Transaction $currentTransaction = null): float
     {
+        $transactions = $this->transactionService->findByAccount($account);
+        if (is_null($currentTransaction) === false) {
+            $transactions[] = $currentTransaction;
+        }
         return array_sum(array_map(function (Transaction $transaction) use ($account) {
             return $this->mapTransactionAsAmount($transaction, $account);
-        }, $this->transactionService->findByAccount($account)));
+        }, $transactions)) ?? 0;
     }
 
     /**
